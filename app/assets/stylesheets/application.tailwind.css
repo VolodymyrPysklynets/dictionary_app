@@ -19,7 +19,7 @@
   }
 
   .form {
-    @apply max-w-lg p-6 mx-auto bg-gray-900 rounded-lg drop-shadow-lg min-w-[400px];
+    @apply max-w-lg p-6 mx-auto bg-gray-900 rounded-lg drop-shadow-lg min-w-[400px] mb-8;
   }
 
   .form-input {
