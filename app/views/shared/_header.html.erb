@@ -1,4 +1,4 @@
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+<nav class="bg-white dark:border-gray-600 dark:bg-gray-700">
   <div
     class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto"
   >
@@ -32,15 +32,15 @@
     </button>
     <% if user_signed_in? %>
       <div class="items-center justify-between">
-        <ul class="flex p-4 font-medium rounded-lg bg-gray-900 border-gray-700">
+        <ul class="flex p-4 font-medium bg-gray-700 border-gray-700 rounded-lg">
           <li>
-            <%= link_to "Pricing", "#", class: "navbar-link" %>
+            <%= link_to "Pricing", pricing_path, class: "navbar-link" %>
           </li>
           <li>
-            <%= link_to "About", "#", class: "navbar-link" %>
+            <%= link_to "About", about_path, class: "navbar-link" %>
           </li>
           <li>
-            <%= link_to "Contact", "#", class: "navbar-link" %>
+            <%= link_to "Contact", contact_path, class: "navbar-link" %>
           </li>
         </ul>
       </div>

@@ -1,0 +1,47 @@
+
+<div id="default-carousel" class="relative mx-auto w-[50%] my-[50px] h-[60vh]" data-carousel="static">
+
+  <div class="relative h-[100%] overflow-hidden rounded-lg">
+    <% @cards.each_with_index do |card, index| %>
+      <div class="hidden duration-700 ease-in-out bg-gray-700 rounded-lg shadow" data-carousel-item>
+        <div class="flex relative justify-between mx-auto h-[50vh]  mt-[24px] !pt-0 p-8">
+          <span class="text-white font-bold absolute right-4 top-0"><%= index + 1 %>/<%= @cards.length %></span>
+          <div class="img-block">
+            <%= image_tag "cards/#{card[:img]}", class: "rounded-lg object-cover ", size: "300x300" %>
+          </div>
+          <div class="content-block flex flex-col justify-between gap-4 px-4">
+            <span class="text-2xl font-bold text-white"><%= card[:word] %></span>
+            <span class="text-2xl font-bold text-gray-400"><%= card[:transcription] %></span>
+
+            <%= audio_tag "#{card[:audio_url]}", controls: true %>
+            <span class="text-2xl font-bold text-gray-400"><%= card[:translation] %></span>
+            <span class="text-2xl font-bold text-white"><%= card[:example] %></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+      <% @cards.each_with_index do |card, index| %>
+        <%= button_tag "", type: "button", class: "w-3 h-3 rounded-full", "aria-current": "#{card[:id] == 1 ? true : false}", "aria-label": "Slide #{card[:id]}", "data-carousel-slide-to": "#{index}" %>
+      <% end %>
+  </div>
+
+  <button type="button" class="absolute top-[180px] start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-white/30 group-hover:bg-white/50 dark:group-hover:g-white group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+          </svg>
+          <span class="sr-only">Previous</span>
+      </span>
+  </button>
+  <button type="button" class="absolute top-[180px] end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-white/30 group-hover:bg-white/50 dark:group-hover:g-white group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+          <span class="sr-only">Next</span>
+      </span>
+  </button>
+</div>
